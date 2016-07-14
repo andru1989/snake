@@ -36,6 +36,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       value: function draw() {
         this.head.draw();
       }
+    }, {
+      key: 'right',
+      value: function right() {
+        this.head.x += 10;
+      }
+    }, {
+      key: 'left',
+      value: function left() {
+        this.head.x -= 10;
+      }
+    }, {
+      key: 'up',
+      value: function up() {
+        this.head.y -= 10;
+      }
+    }, {
+      key: 'down',
+      value: function down() {
+        this.head.y += 10;
+      }
     }]);
 
     return Snake;
@@ -45,4 +65,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   var ctx = canvas.getContext('2d');
 
   var snake = new Snake();
+
+  setInterval(function () {
+    snake.right();
+    // Borra el cuadrado de acuerdo a la coordenada x, y
+    // n cantidad de pixeles hacia la derecha y hacia abajo
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    snake.draw();
+  }, 1000 / 10);
 })();
